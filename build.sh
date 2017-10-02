@@ -1,2 +1,2 @@
-#!/bin/bashs
+#!/bin/bash
 docker build -t djdevel .
