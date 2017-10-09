@@ -30,6 +30,8 @@ RUN apt-get update \
         arc-theme \
         dbus-x11 x11-utils \
         git maven \
+#        ecryptfs-utils \
+        encfs \
     && add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make \
     && apt update -y \
     && apt install -y ubuntu-make \

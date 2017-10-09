@@ -6,6 +6,29 @@ docker-ubuntu-vnc-desktop
 
 Docker image to provide HTML5 VNC interface to access Ubuntu 16.04 LXDE desktop environment.
 
+
+Quick Start
+-------------------------
+
+```
+./build.sh        # <---- crear la imagen de docker. solo la primera vez
+./start.sh        # <---- iniciar la imagen
+```
+
+Ahora nos conectamos con un cliente VNC (p.e [RealVNC](https://www.realvnc.com/en/connect/download/viewer/)) o directamente desde el navegador `http://localhost:6080`.
+
+Una vez dentro del contenedor podemos montar el directorio encriptado. En la maquina host lo encontraremos (encriptado) dentro de la
+carpeta `data` situada en la misma carpeta que el `Dockerfile`.
+
+```
+mount-secure.sh     # <---- la primera vez seleccionamos opciones por defecto y ponemos el password que queramos.
+                    #       las veces siguientes unicamente nos pedira el password.
+umount-secure.sh    # <---- si necesitamos desmontar el directorio encriptado.
+```
+
+Una vez hecho esto veremos en la carpeta `/secure` los archivos desencriptados. La carpeta data del host tambien la veremos montada en
+`/data`, aunque aqui no deberiamos tocar nada porque esta encriptada.
+
 Quick Start
 -------------------------
 
