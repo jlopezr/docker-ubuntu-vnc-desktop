@@ -14,7 +14,16 @@ if [ -n "$VNC_PASSWORD" ]; then
     export VNC_PASSWORD=
 fi
 
-tar xzf /usr/share/intellij/idea-config.tgz -C /root
+if [ -n "$RESOLUTION" ]; then
+    #cat /etc/supervisor/conf.d/supervisord.conf | sed 's/^command=\/usr\/bin\/Xvfb.*/command=\/usr\/bin\/Xvfb :1 -screen 0 '"$RESOLUTION"'/' > /etc/supervisor/conf.d/supervisor.conf.2
+    sed -i 's/^command=\/usr\/bin\/Xvfb.*/command=\/usr\/bin\/Xvfb :1 -screen 0 '"$RESOLUTION"'/' /etc/supervisor/conf.d/supervisord.conf
+fi
+
+echo "127.0.0.1   dmi.local.downjones.com" >> /etc/hosts
+echo "127.0.0.1   utilities.factiva.com" >> /etc/hosts
+
+tar xzf /usr/share/intellij/dotIntelliJ.tar.gz -C /root
+#tar xzf /usr/share/intellij/idea-config.tgz -C /root
 
 cd /usr/lib/web && ./run.py > /var/log/web.log 2>&1 &
 nginx -c /etc/nginx/nginx.conf
