@@ -29,7 +29,7 @@ RUN apt-get update \
         encfs nginx \
         libxtst-dev libssl-dev libjpeg-dev autoconf \
         nodejs tomcat8 ubuntu-make \
-    && umake ide idea /opt/idea \
+    && umake ide idea-ultimate /opt/idea \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/* \
